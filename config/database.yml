@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: slack_dev
+
+production:
+  <<: *default
+  database: SlackNotifier_production
+  username: SlackNotifier
+  password: <%= ENV['SLACKNOTIFIER_DATABASE_PASSWORD'] %>
