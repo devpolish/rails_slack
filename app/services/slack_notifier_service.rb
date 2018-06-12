@@ -4,7 +4,7 @@ class SlackNotifierService
   end
 
   def notify_slack
-    notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+    notifier = Slack::Notifier.new ENV.fetch('SLACK_WEBHOOK_URL')
     notifier.ping @message
   end
 
